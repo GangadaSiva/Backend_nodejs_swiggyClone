@@ -18,17 +18,19 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((error)=>console.log(error))
 
 
-app.listen(Port, ()=>{
-    console.log(`Server running on port number ${Port}`);
-})
+
 
 app.use(bodyParser.json());
-
-app.use('/',(req, res)=>{
-    res.send("<h1> Hello Welcome to Home Page</h1>");
-})
 
 app.use('/vendor',vendorroutes);
 app.use('/firm',firmroutes);
 app.use('/product',productroutes);
 app.use('/uploads', express.static('uploads'));
+
+app.listen(Port, ()=>{
+    console.log(`Server running on port number ${Port}`);
+})
+
+app.use('/',(req, res)=>{
+    res.send("<h1> Hello Welcome to Home Page</h1>");
+})

@@ -9,7 +9,7 @@ const app = express();
 const cors = require('cors');
 const path = require('path');
 
-const Port = 4000;
+const Port = process.env.PORT || 4000;
 
 dotEnv.config();
 
@@ -24,7 +24,7 @@ app.listen(Port, ()=>{
 
 app.use(bodyParser.json());
 
-app.use('/home',(req, res)=>{
+app.use('/',(req, res)=>{
     res.send("<h1> Hello Welcome to Home Page</h1>");
 })
 
